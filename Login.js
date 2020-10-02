@@ -13,7 +13,7 @@ import { Actions } from "react-native-router-flux";
 
 const userInfo = { username: "mo", password: "1234" };
 const image = { uri: "https://wallpaperset.com/w/full/e/6/5/494729.jpg" };
-
+//hello morayo
 export default class Login extends React.Component {
   // enterHome() {
   //   Actions.home();
