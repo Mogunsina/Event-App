@@ -1,9 +1,10 @@
 import "react-native-gesture-handler";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ImageBackground } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// import { createStackNavigator } from "@react-navigation/stack";
+// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
@@ -12,12 +13,19 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 // const HomeStack = createStackNavigator();
 // const ActivityStack = createStackNavigator();
 // const AccountStack = createStackNavigator();
-const Tab = createBottomTabNavigator();
+
+// const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
+const image = { uri: "https://wallpaperset.com/w/full/e/6/5/494729.jpg" };
 
 export default function Home() {
   return (
     <NavigationContainer>
       <Tab.Navigator
+        initialRouteName="Home"
+        activeColor="#F2AA4CFF"
+        inactiveColor="gray"
+        barStyle={{ backgroundColor: "black" }}
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -31,13 +39,13 @@ export default function Home() {
             }
 
             // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return <Ionicons name={iconName} size={20} color={color} />;
           },
         })}
-        tabBarOptions={{
-          activeTintColor: "#F2AA4CFF",
-          inactiveTintColor: "gray",
-        }}
+        // tabBarOptions={{
+        //   activeTintColor: "#F2AA4CFF",
+        //   inactiveTintColor: "gray",
+        // }}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Activity" component={ActivityScreen} />
@@ -105,8 +113,14 @@ function HomeScreen() {
 }
 function ActivityScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.activity}>Activity Screen</Text>
+    <View style={styles.activity}>
+      <View style={styles.activity1}>
+        <ImageBackground source={image} style={styles.image}>
+          <Text style={styles.actText1}> Hello </Text>
+        </ImageBackground>
+      </View>
+      <View style={styles.activity2} />
+      <View style={styles.activity3} />
     </View>
   );
 }
@@ -120,10 +134,10 @@ function AccountScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "black",
-    alignItems: "center",
-    justifyContent: "center",
+    //flex: 1,
+    //backgroundColor: "black",
+    //alignItems: "center",
+    //justifyContent: "center",
   },
   account: {
     // backgroundColor: "white",
@@ -132,15 +146,54 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   activity: {
-    // backgroundColor: "white",
-    color: "white",
-    borderBottomWidth: 1,
-    borderBottomColor: "#000",
-    padding: 5,
+    flex: 1,
+    flexDirection: "column",
+    backgroundColor: "black",
+    justifyContent: "center",
+    alignItems: "center",
+    //color: "white",
   },
+  activity1: {
+    height: 70,
+    width: 400,
+    // backgroundColor: "blue",
+    //borderRadius: 20,
+    // bottom: 200,
+  },
+  activity2: {
+    height: 60,
+    width: 400,
+    backgroundColor: "#F2AA4CFF",
+    borderRadius: 20,
+    bottom: 150,
+  },
+  activity3: {
+    height: 60,
+    width: 400,
+    backgroundColor: "#F2AA4CFF",
+    borderRadius: 20,
+    bottom: 100,
+  },
+  actText1: {
+    justifyContent: "center",
+    color: "white",
+    textAlign: "center",
+    //padding: 20,
+  },
+  image: {
+    flex: 1,
+    borderRadius: 20,
+    resizeMode: "cover",
+    justifyContent: "center",
+    overflow: "hidden",
+    bottom: 200,
+  },
+
   home: {
     color: "white",
-    // alignItems: "center",
+    //flex: 1,
+    //flexDirection: "column",
+
     borderBottomWidth: 1,
     borderBottomColor: "#000",
     padding: 5,

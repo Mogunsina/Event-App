@@ -11,9 +11,9 @@ import Home from "./Home";
 const Index = () => (
   <Router>
     <Scene key="root" hideNavBar={true}>
-      <Scene key="login" component={Login} title="Login" initial />
+      <Scene key="login" component={Login} title="Login" />
       <Scene key="signup" component={Signup} title="SignUp" />
-      <Scene key="Home" component={Home} title="Home" />
+      <Scene key="Home" component={Home} title="Home" initial />
     </Scene>
   </Router>
 );
